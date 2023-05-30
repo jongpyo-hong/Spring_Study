@@ -1,0 +1,236 @@
+# 어노테이션(Annotation)
+
+----------------------------------------------------
+
+### 1. 어노테이션 ?
+- 사전적으로 "주석" 이라는 의미를 가지고 있다. 
+- 자바 코드에서 @를 이용해 주석처럼 달면, 특수한 의미,
+기능을 부여해준다.
+- 프로그램 코드의 일부가 아닌 프로그램에 관한 데이터를 제공,
+코드에 정보를 추가하는 정형화된 방법이다.
+
+### 2. DI, IOC 에 관한 어노테이션
+
+1. @Configuration
+
+- 설정파일을 만들기 위한 어노테이션
+- Bean 을 등록하기 위한 어노테이션
+
+2. @Bean
+
+- 스프링 IOC 컨테이너가 관리하는 자바 객체
+- 일반적으로는 컴포넌트 스캔을 사용해 자동으로 빈을 등록하지만, 수동으로 빈을 등록해야 하는 경우 사용한다
+
+
+3. @Component
+
+- 개발자가 직접 작성한 Class를 Bean 으로 등록하기 위한 어노테이션
+- @ComponentScan 선언에 의해 특정 패키지 안의 클래스 들을 자동 스캔하여 그 범위 안에 있는 클래스들에 빈 인스턴스를 생성한다.
+- Controller, Service, DAO 세가지 이외의 클래스에만 사용을 권장
+
+4. @Service
+
+- 비지니스 로직이 들어가는 Service로 사용되는 클래스 임을 명시하는 어노테이션
+
+5. @Repository
+
+- DB연동 작업을 하는 클래스인 DAO에 특화된 어노테이션
+- 해당 클래스에서 발생하는 DB 관련 예외를 spring의 DAOException으로 전환할 수 있는 장점이 있다.
+
+6. @Controller
+
+- Spring MVC의 Controller로 사용되는 클래스 선언을 단순화 시켜주는 어노테이션
+
+7. @ControllerAdvice
+
+- 예외처리, 바인딩 설정, 모델 객체를 모든 컨트롤러 전반에 걸쳐 적용하고 싶은 경우에 사용한다.
+- 예외를 처리하는 @ExceptionHandler와 함께 사용하면 전반에 걸친 예외처리가 가능
+- 바인딩 또는 검증을 설정할 수 있는 @initBinder와 함께 사용하면 전반에 걸친 바인딩 설정 가능
+- 모델 정보를 초기에 초기화 할 수 있는 @ModelAttribute와 함께 사용하면 전반에 거린 모델 정보 설정이 가능
+
+8. @RestController
+
+- REST API를 제공하는 컨트롤러를 위한 어노테이션, 해당 클래스에서 URL 매핑된 메서드들은 리턴 값으로 String 을 반환한다.
+- @Controller에 @ResponseBody가 추가된것(Controller에 @ResponseBody를 붙인것과 완벽히 동일하다)
+- Json 형태로 객체 데이터를 반환한다
+
+9. @RestControllerAdvice
+
+- @ControllerAdvice 와 @ResponseBody 를 합쳐놓은 어노테이션
+- @ControllerAdvice 와 동일한 역할을 수행하고, @ResponseBody 를 통해 객체를 리턴 할 수 있다.
+- 단순히 예외를 처리하고싶다면 @ControllerAdvice, 응답으로 객체를 리턴해야한다면 @RestControllerAdvice를 적용하면 된다.
+
+10. @Aspect
+
+- 스프링의 포인트컷과 어드바이스로 구성된 어드바이저의 생성을 편리하게 해주는 기능을 가진 어노테이션
+
+11. @Autowired
+
+- 필요한 의존 객체의 "타입"에 해당하는 빈을 찾아 주입한다.
+- 적용위치 :
+
+      - 변수
+      - 생성자
+      - setter
+      - 일반 메서드
+
+12. @ComponentScan
+
+- 클래스들을 순회하며 빈으로 등록될 객체들을 탐색후, 자동으로 등록한다
+- 범위
+
+      - @Configuration
+      - @Component
+      - @Service
+      - @Repository
+      - @Controller
+      - @RestController
+      - @ControllerAdvice
+      - @RestControllerAdvice
+      - @Aspect ...
+
+### 3. Lombok 에 관한 어노테이션
+
+1. 생성자 관련
+
+1-1. @AllArgsConstructor
+
+- 모든 필드를 파라미터로 가지는 생성자를 생성한다
+
+1-2. @NoArgsConstructor
+
+- 파라미터가 없는 기본 생성자를 생성
+
+1-3. @RequiredArgsConstructor
+
+- final, @NonNull 인 필드값만 파라미터로 받는 생성자로 생성
+
+2. 메서드 관련
+
+2-1. @Getter
+
+- Getter를 자동으로 생성
+
+2-2. @Setter
+
+- Setter를 자동으로 생성
+
+2-3. @ToString
+
+- toString 메서드를 자동으로 생성
+
+2-4. @EqualsAndHashCode
+
+- equals() 메서드와 hashCode() 메서드 자동으로 생성
+
+3. 통합기능 관련
+
+3-1. @Data
+
+- @toString, @getter, @setter, @RequiredArgsConstructor 등을 모두 사용한 것과 같은 기능
+
+3-2. @Value
+
+- @Data 의 변형된 기능
+- 모든 필드를 private final 로 설정, 클래스를 final로 설정, Setter를 생성하지 않는다.
+
+4. 빌더 패턴
+
+4-1. @Builder
+
+- 메서드 체이닝을 이용하는 static 메서드 builder()를 생성한다.
+
+4-2. @Builder.Default
+
+- 명시적으로 기본값 설정
+- 필드에 값을 설정하지 않은 경우 0/null/false 로 기본값이 설정된다, 이때 기본값을 지정하기 위해 사용
+
+### 4. 요청, 응답에 관한 어노테이션
+
+1. @ResponseBody
+
+- @Controller 로 지정된 클래스 내에서 어떤 비즈니스 로직을 처리하는 메서드는 클라이언트에게 뷰가 아닌 데이터(JSON)를 전송하고 싶을때 사용한다
+
+2. @RequestBody
+
+- Http 요청 파라미터 형식이 아닌 HTTP BODY 형식의 데이터를 클라이언트에게서 받아서 처리해야 할 때 사용한다
+
+3. @RequestMapping
+
+- 어노테이션의 이름과 같이 요청(URL)을 컨트롤러의 메서드와 매핑할 때 사용한다(디폴트가 GET 방식)
+- 메서드뿐만 아니라 클래스 레벨에서도 사용이 가능하다
+
+4. @GetMapping, @PostMapping
+
+- @RequestMapping 과 동일하나, HTTP 메서드를 따로 지정해줘야 했던 @RequestMapping과 다르게 원하는 메서드를 직접 사용할 수 있다
+- get 메서드로 매핑, post 메서드로 매핑
+
+5. @CookieValue
+
+- 쿠키 값 또는 파라미터를 설정한다
+
+6. @RequestParam
+
+- HTTP 요청 파라미터를 쉽게 받을수 있는 어노테이션
+
+7. @ModelAttribute
+
+- 요청 파라미터의 값들을 통해 객체를 만들때 하나하나 파라미터 값을 불러오지 않아도 객체 생성을 자동화 할 수 있다
+
+
+### 5. JPA에 관한 어노테이션
+
+1. @Entity : 클래스를 엔티티로 선언
+
+
+2. @Id : 테이블의 기본키에 사용할 속성을 지정
+
+
+3. @Table(name="테이블명") : 엔티티와 매핑할 테이블을 지정
+
+
+4. @GenerateValue : 키 값을 생성하는 전략 명시
+
+
+5. @Lob : BLOB, CLOB 타입 매핑
+
+
+6. @Enumerated(EnumType.STRING) -> 기본값은 (EnumType.ODINAL) 이지만, 보안상 문제로 쓰지않는다
+
+
+7. @Transient : 엔티티 내부에서만 사용되는 항목 - 테이블 필드로 반영되지 않는다
+
+
+8. @Temporal : 날짜와 시간 (과거에 사용했던 어노테이션)
+
+
+9. @CreateDate : 엔티티가 생성되어 저장될 때 시간 자동 저장
+
+
+10. @LastModifiedDate : 조회한 엔티티의 값을 변경할 때 시간 자동 저장
+
+
+11. @CreationTimestamp : INSERT 쿼리시 자동으로 현재 날짜와 시간이 추가된다
+
+
+12. @UpdateTimestamp : UPDATE 쿼리시 자동으로 현재 날짜와 시간이 수정
+
+
+13. @Column
+
+    - 속성
+      - @column(nullable=true|false) - notnull 제약조건 부여
+
+      - @column(Definition)
+    
+      - @Column(name="db의 필드명") - 엔티티의 필드명과 실 db의 테이블 필드명이 다를 때
+    
+      - @Column(unique="ture|false") - unique 제약조건 부여
+    
+      - @Column(length= ) - 기본값 = 255, 컬럼의 길이 설정
+    
+      - @Column(insertable=true|false) - 추가 불가
+    
+      - @Column(updatable=true|false) - 수정 불가
+    
+      - @MappedSuperclass : 공통적으로 사용하는 항목들(테이블을 직접 만들지 않는 항목) BaseEntity추상클래스를 만들어서 사용한다
