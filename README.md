@@ -6,7 +6,15 @@
 
 ## 2023/05/30
 ### Log
-- JPA 주요 어노테이션 정리 추가
-- jUnit, jUnit의 주요 메서드 정리 추가
-- Test 주요 어노테이션 정리 추가
+
+- memo, exam 폴더 추가
+
+- memo
+  - JPA 주요 어노테이션 정리 추가
+  - jUnit, jUnit의 주요 메서드 정리 추가
+  - Test 주요 어노테이션 정리 추가
+
+- exam
+  - JPA 예제 연습
+
 
