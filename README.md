@@ -23,4 +23,11 @@
 - memo
   - JPA 연관 관계 매핑 어노테이션 추가
 
+## 2023/06/01
+### Log
+
+- memo
+  - @EntityListeners
+  - @EnableJpaAuditing 추가하기 
+
 
