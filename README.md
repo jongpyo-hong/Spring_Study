@@ -27,14 +27,11 @@
 ### Log
 
 - memo
-- JPA 관련 어노테이션들
+- JPA 관련 어노테이션들 추가
   - @EntityListeners
   - @EnableJpaAuditing 
   - @CreateDate
   - @LastModifiedDate
-  - @IdClass 추가하기 
-
-- Lombok 관련어노테이션
-  @EqualsAndHashCode 추가
+  - @IdClass
 
 
