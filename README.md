@@ -34,4 +34,7 @@
   - @LastModifiedDate
   - @IdClass 추가하기 
 
+- Lombok 관련어노테이션
+  @EqualsAndHashCode 추가
+
 
