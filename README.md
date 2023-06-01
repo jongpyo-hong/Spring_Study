@@ -31,6 +31,7 @@
   - @EntityListeners
   - @EnableJpaAuditing 
   - @CreateDate
-  - @LastModifiedDate 추가하기 
+  - @LastModifiedDate
+  - @IdClass 추가하기 
 
 
