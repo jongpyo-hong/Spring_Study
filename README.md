@@ -27,7 +27,10 @@
 ### Log
 
 - memo
+- JPA 관련 어노테이션들
   - @EntityListeners
-  - @EnableJpaAuditing 추가하기 
+  - @EnableJpaAuditing 
+  - @CreateDate
+  - @LastModifiedDate 추가하기 
 
 
